@@ -1,0 +1,9 @@
+<?php
+// test.php - Archivo de diagnóstico
+header('Content-Type: text/plain');
+echo "Prueba de PHP funcionando\n";
+echo "Directorio actual: " . __DIR__ . "\n";
+echo "Ruta del JSON: " . dirname(__DIR__) . '/comentarios.json' . "\n";
+echo "¿Existe el archivo? " . (file_exists(dirname(__DIR__) . '/comentarios.json') ? 'Sí' : 'No') . "\n";
+echo "¿Es escribible? " . (is_writable(dirname(__DIR__) . '/comentarios.json') ? 'Sí' : 'No') . "\n";
+?>

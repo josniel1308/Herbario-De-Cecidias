@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foro de Comentarios</title>
+  <link rel="stylesheet" href="css/style2.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   <!-- Pantalla de carga inicial con el logo -->
+   <div id="splash">
+     <img src="RES/Herbario Cecidias.png" alt="Logo Intro">
+   </div>
+
+   <!-- Barra lateral de navegación -->
+   <div class="sidebar">
+     <div class="sidebar"> <!-- ⚠️ Este div está duplicado, se puede quitar uno -->
+        <a href="index.html#agallas"><i class="fas fa-leaf"></i> Información sobre las agallas</a>
+        <a href="index.html#galeria"><i class="fas fa-images"></i> Galería</a>
+        <a href="index.html#investigaciones"><i class="fas fa-flask"></i> Investigaciones</a>
+        <a href="https://www.scielo.br/j/bn/a/VNrcQ7ttg3xQ9DFFk6f6PFn/?lang=en" target="_blank">
+          <i class="fas fa-comments"></i> Artículo
+        </a>
+        <a href="index.html#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+     </div>
+   </div>
+
+   <!-- Encabezado principal -->
+   <header>
+     <h1>Foro de Comentarios</h1>
+     <p>Comparte tus ideas sobre el Herbario de Cecidias 🌿</p>
+   </header>
+
+   <main>
+     <!-- Formulario para publicar un comentario -->
+     <section class="formulario">
+       <h2>Escribe tu comentario</h2>
+       <form id="comentarioForm">
+         <input type="text" id="nombre" placeholder="Tu nombre" required>
+         <textarea id="mensaje" rows="4" placeholder="Escribe tu comentario..." required></textarea>
+         <button type="submit">Publicar</button>
+       </form>
+     </section>
+
+     <!-- Lista donde se mostrarán los comentarios -->
+     <section class="comentarios">
+       <h2>Comentarios</h2>
+       <ul id="listaComentarios"></ul> <!-- Aquí el JS insertará <li> con los comentarios -->
+     </section>
+   </main>
+
+   <!-- Pie de página -->
+   <footer>
+     <p>&copy; 2025 Foro del Herbario</p>
+   </footer>
+
+   <!-- Script que maneja la lógica del foro -->
+   <script src="JS/Foro.js"></script>
+</body>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herbario de Cecidias</title>
+    <!-- Librería de iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Hoja de estilos -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+ <!-- Pantalla de carga inicial (se oculta después con JS) -->
+<div id="splash">
+  <img src="RES/Herbario Cecidias.png" alt="Logo Intro">
+</div>
+
+   <!-- Divs usados para diferenciar resoluciones (desktop, tablet, móvil) -->
+   <div class="resolucion">
+    <div class="desktop"></div>
+    <div class="tablet"></div>
+    <div class="movil"></div>
+   </div>
+   
+   <!-- Modal para ver imagen ampliada -->
+    <div class="IMGrande" id="IMGrande">
+        <span id="EquisCerrar">X</span> <!-- Botón para cerrar -->
+        <img src="RES/agalla1.jpeg" id="img" alt="Vista ampliada">
+    </div>
+    
+    <!-- Logo fijo en pantalla -->
+    <div class="logo">
+        <img src="RES/Herbario Cecidias.png" alt="Logo Herbario de Agallas">
+    </div>
+
+    <!-- Menú lateral con enlaces -->
+    <div class="sidebar">
+        <a href="#agallas"><i class="fas fa-leaf"></i> información sobre las agalla </a>
+        <a href="#galeria"><i class="fas fa-images"></i> Galería</a>
+        <a href="#investigaciones"><i class="fas fa-flask"></i> Investigaciones</a>
+        <a href="file:///C:/Users/Josniel/Videos/Herbario/index1.html"><i class="fas fa-comments"></i> Foro</a> <!-- enlace local -->
+        <a href="https://www.scielo.br/j/bn/a/VNrcQ7ttg3xQ9DFFk6f6PFn/?lang=en" target="_blank"><i class="fas fa-comments"></i>Articulo</a> <!-- enlace externo -->
+        <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+    </div>
+
+    <!-- Encabezado de la página -->
+    <header id="inicio">
+        <h1>Herbario de Cecidias</h1>
+        <p>Explorando el fascinante mundo de las cecidias</p>
+    </header>
+
+    <main>
+        <!-- Sección de explicación sobre agallas -->
+        <section id="agallas">
+            <h2>Sobre las agallas</h2>
+            <div class="info-box">
+                <h3>¿Qué son las agallas?</h3>
+                <p>Las agallas (cecidias) son estructuras anómalas en tejidos vegetales...</p>
+                
+                <h3>Características principales</h3>
+                <ul>
+                    <li>Cada morfotipo de agalla es único...</li>
+                    <li>Cada especie de insecto es específica...</li>
+                </ul>
+                
+                <h3>Importancia científica</h3>
+                <p>El estudio de las agallas proporciona información valiosa...</p>
+            </div>
+        </section>
+
+        <!-- Galería de imágenes -->
+        <section id="galeria">
+            <h2>Galería</h2>
+            <p>Aquí podrás ver imágenes y subir las tuyas propias.</p>
+            
+            <!-- Formulario de subida de imágenes -->
+            <div class="upload-box">
+                <h3>Agregar imagen a la galería</h3>
+                <form id="formSubida">
+                    <div class="file-input-container">
+                        <label for="archivoInput" class="file-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Seleccionar imágenes</span>
+                        </label>
+                        <input type="file" id="archivoInput" multiple accept="image/*"> <!-- input de subida -->
+                    </div>
+                    <button type="submit" class="upload-btn">Subir imágenes</button>
+                </form>
+                <p id="mensajeError" class="error-message"></p> <!-- mensaje si hay error -->
+            </div>
+            
+            <!-- Grid con imágenes ya cargadas -->
+            <div class="gallery-grid" id="galleryGrid">
+                <div class="gallery_item"><img src="RES/agalla1.jpeg" alt="Agalla 1"></div>
+                <div class="gallery_item"><img src="RES/agalla3.jpeg" alt="Agalla 3"></div>
+                <div class="gallery_item"><img src="RES/agalla4.jpeg" alt="Agalla 4"></div>
+                <div class="gallery_item"><img src="RES/agalla2.jpeg" alt="Agalla 2"></div>
+                <div class="gallery_item"><img src="RES/agalla5.jpeg" alt="Agalla 5"></div>
+                <div class="gallery_item"><img src="RES/agallas6.jpg" alt="Agalla 6"></div>
+            </div>
+        </section>
+
+        <!-- Investigaciones científicas -->
+        <section id="investigaciones">
+            <h2>Investigaciones</h2>
+            <div class="info-box">
+                <h3>Estudio en Guanacaste</h3>
+                <p>Entre 2010 y 2012 se realizó un inventario...</p>
+                
+                <!-- Datos resumidos -->
+                <div class="research-findings">
+                    <div class="finding">
+                        <h4>131</h4>
+                        <p>morfotipos de agallas identificados</p>
+                    </div>
+                    <div class="finding">
+                        <h4>44</h4>
+                        <p>familias de plantas hospederas</p>
+                    </div>
+                </div>
+                
+                <h3>Hallazgos principales</h3>
+                <ul>
+                    <li>Fabaceae fue la familia con más agallas</li>
+                    <li>Las hojas fueron el órgano más afectado</li>
+                </ul>
+                
+                <h3>Cecidiario</h3>
+                <p>Se estableció un herbario especializado...</p>
+                <ol>
+                    <li>Especímenes secos</li>
+                    <li>Muestras en etanol</li>
+                    <li>Colección de insectos</li>
+                    <li>Base de datos digital</li>
+                </ol>
+            </div>
+        </section>
+        
+        <!-- Contacto -->
+        <section id="contacto">
+            <h2>Contacto</h2>
+            <p>Para más información sobre el herbario.</p>
+            <a href="mailto:info@herbariocecidias.com" class="btn">Contáctanos</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <p>&copy; 2025 Herbario de Agallas | TEC Campus San Carlos </p>
+
+    <!-- Archivo de scripts -->
+    <script src="JS/JScript.js"></script>
+</body>
+</html>

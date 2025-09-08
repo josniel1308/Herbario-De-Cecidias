@@ -1,0 +1,192 @@
+/* ===========================
+   RESET DE ESTILOS
+   =========================== */
+/* Aplica a todos los elementos para eliminar márgenes y paddings por defecto, y usar box-sizing border-box para que padding y border no aumenten el ancho total */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===========================
+   BODY
+   =========================== */
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif; /* Fuente principal */
+  background: linear-gradient(135deg, #e0f7fa, #f1f8e9); /* Fondo degradado diagonal */
+  color: #37474f; /* Color de texto base */
+  line-height: 1.6; /* Espaciado entre líneas para mejor lectura */
+}
+
+/* ===========================
+   HEADER
+   =========================== */
+header {
+  background: linear-gradient(to right, #26a69a, #4db6ac); /* Degradado horizontal del header */
+  color: white; /* Texto en blanco */
+  text-align: center; /* Centra el contenido */
+  padding: 30px; /* Espaciado interno */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Sombra suave debajo del header */
+}
+
+/* Espaciado específico para el título dentro del header */
+header h1 {
+  margin-bottom: 10px; /* Separación del subtítulo o párrafo */
+}
+
+/* ===========================
+   MAIN
+   =========================== */
+main {
+  max-width: 800px; /* Máximo ancho de contenido */
+  margin: 30px auto; /* Centrado horizontal con margen superior e inferior */
+  padding: 20px; /* Espaciado interno */
+}
+
+/* ===========================
+   FORMULARIO Y COMENTARIOS
+   =========================== */
+.formulario, .comentarios {
+  background: white; /* Fondo blanco para formularios y comentarios */
+  padding: 20px; /* Espaciado interno */
+  margin-bottom: 25px; /* Separación entre secciones */
+  border-radius: 12px; /* Bordes redondeados */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Sombra ligera para dar profundidad */
+}
+
+/* ===========================
+   FORMULARIO
+   =========================== */
+form {
+  display: flex;
+  flex-direction: column; /* Los inputs se apilan verticalmente */
+}
+
+/* Estilo de inputs y textarea */
+input, textarea {
+  margin-bottom: 15px; /* Separación entre campos */
+  padding: 12px; /* Espaciado interno */
+  border: 2px solid #b2dfdb; /* Borde de color claro */
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño de letra */
+}
+
+/* Focus para inputs y textarea */
+input:focus, textarea:focus {
+  outline: none; /* Quita el borde azul por defecto */
+  border-color: #26a69a; /* Resalta el borde */
+  box-shadow: 0 0 5px rgba(38, 166, 154, 0.5); /* Sombra suave al enfocar */
+}
+
+/* ===========================
+   BOTONES
+   =========================== */
+button {
+  background: linear-gradient(to right, #26a69a, #4db6ac); /* Degradado del botón */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  padding: 12px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño de letra */
+  cursor: pointer; /* Cambio de cursor al pasar por encima */
+  transition: transform 0.2s ease; /* Animación al hacer hover */
+}
+
+/* Animación al pasar el mouse sobre el botón */
+button:hover {
+  transform: scale(1.05); /* Agranda ligeramente */
+}
+
+/* ===========================
+   LISTA DE COMENTARIOS
+   =========================== */
+.comentarios ul {
+  list-style: none; /* Quita los bullets de la lista */
+}
+
+.comentarios li {
+  background: #f1f8e9; /* Fondo de cada comentario */
+  padding: 15px; /* Espaciado interno */
+  border-left: 5px solid #4db6ac; /* Barra lateral verde */
+  margin-bottom: 15px; /* Separación entre comentarios */
+  border-radius: 6px; /* Bordes redondeados */
+}
+
+/* Color del nombre o elemento destacado */
+.comentarios li strong {
+  color: #00796b;
+}
+
+/* ===========================
+   SPLASH SCREEN
+   =========================== */
+#splash {
+    position: fixed; /* Fija la pantalla de carga */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(270deg, #a7c7e7, #b2f0d4, #e0f7fa); /* Fondo degradado */
+    display: flex; /* Flexbox para centrar contenido */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    z-index: 3000; /* Siempre arriba de todo */
+    animation: fadeOut 1s ease forwards; /* Animación para desaparecer */
+    animation-delay: 5s; /* Espera 5 segundos antes de desaparecer */
+}
+
+#splash img {
+    width: 200px; /* Ancho de la imagen */
+    height: auto; /* Mantener proporción */
+    animation: zoomIn 2s ease infinite alternate; /* Animación de zoom infinito */
+    border-radius: 50%; /* Redondea la imagen en círculo */
+    box-shadow: 0 0 30px rgba(255,255,255,0.8); /* Sombra brillante alrededor */
+}
+
+/* Animación zoom de la imagen */
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0.7; }
+    to { transform: scale(1.2); opacity: 1; }
+}
+
+/* Animación de desvanecimiento de la pantalla */
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* ===========================
+   MENSAJES DE USUARIO (ERROR / ÉXITO)
+   =========================== */
+.mensaje-usuario {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+
+.mensaje-usuario.error {
+    color: #721c24; /* Texto rojo oscuro */
+    background-color: #f8d7da; /* Fondo rojo claro */
+    border: 1px solid #f5c6cb; /* Borde rojo */
+}
+
+.mensaje-usuario.success {
+    color: #155724; /* Texto verde oscuro */
+    background-color: #d4edda; /* Fondo verde claro */
+    border: 1px solid #c3e6cb; /* Borde verde */
+}
+
+/* ===========================
+   AJUSTES ADICIONALES DE COMENTARIOS
+   =========================== */
+.comentarios li {
+    margin-bottom: 20px; /* Separación entre comentarios */
+    padding: 15px; /* Espaciado interno */
+    background: #f8f9fa; /* Fondo gris claro */
+    border-radius: 8px; /* Bordes redondeados */
+    border-left: 4px solid #4db6ac; /* Barra lateral verde */
+}
+
+.comentarios li p {
+    margin: 10px 0 0 0; /* Espacio solo arriba del párrafo */
+    color: #495057; /* Color gris oscuro para texto del comentario */
+}
