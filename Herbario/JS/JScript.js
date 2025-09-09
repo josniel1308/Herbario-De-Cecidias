@@ -15,6 +15,7 @@ const archivosSubidos = new Set();
 const archivoInput = document.getElementById('archivoInput');
 const mensajeError = document.getElementById('mensajeError');
 const formSubida = document.getElementById('formSubida');
+let title = document.getElementById("title")
 
 // Inicializar la galería
 function inicializarGaleria() {
@@ -31,6 +32,8 @@ function inicializarGaleria() {
             // Mostrar en el elemento imagen de IMGrande a la que se le da click
             IMGrande.style.display = "flex";
             img.src = imagen.src;
+            title.textContent = elemento.dataset.name;
+                console.log(title)
         });
     });
 }

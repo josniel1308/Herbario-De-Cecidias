@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
- <!-- Pantalla de carga inicial (se oculta después con JS) -->
+ <!-- Pantalla de carga inicial (se oculta después con JS) --> 
 <div id="splash">
   <img src="RES/Herbario Cecidias.png" alt="Logo Intro">
 </div>
@@ -26,6 +26,7 @@
     <div class="IMGrande" id="IMGrande">
         <span id="EquisCerrar">X</span> <!-- Botón para cerrar -->
         <img src="RES/agalla1.jpeg" id="img" alt="Vista ampliada">
+        <p id="title">Este es el título de la imagen</p>
     </div>
     
     <!-- Logo fijo en pantalla -->
@@ -44,13 +45,22 @@
     </div>
 
     <!-- Encabezado de la página -->
-    <header id="inicio">
+    <header id="inicio" class="carrucel">
         <h1>Herbario de Cecidias</h1>
         <p>Explorando el fascinante mundo de las cecidias</p>
+        <figure id="carrucel">
+            <div class="box">
+                <span style="--i:1;" class="gallery_item" ><img src="RES/Caricatura_agallas_edi.jpeg" alt="draw1" data-name="loremimput sit amet consectetur 1"  ></span>
+                <span style="--i:2;" class="gallery_item" ><img src="RES/CaricaturaNico_Agallas_ACG_edi.jpeg" alt="draw2" data-name="loremimput sit amet consectetur 2" ></span>
+                <span style="--i:3;" class="gallery_item" ><img src="RES/Caricatura_agallas_edi.jpeg" alt="draw3" data-name="loremimput sit amet consectetur 3" ></span>
+                <span style="--i:4;" class="gallery_item" ><img src="RES/CaricaturaNico_Agallas_ACG_edi.jpeg" alt="draw4" data-name="loremimput sit amet consectetur 4" ></span>
+                
+            </div>
+        </figure>
     </header>
 
     <main>
-        <!-- Sección de explicación sobre agallas -->
+        <!-- Sección de explicación sobre agallas-->
         <section id="agallas">
             <h2>Sobre las agallas</h2>
             <div class="info-box">
@@ -91,12 +101,19 @@
             
             <!-- Grid con imágenes ya cargadas -->
             <div class="gallery-grid" id="galleryGrid">
-                <div class="gallery_item"><img src="RES/agalla1.jpeg" alt="Agalla 1"></div>
-                <div class="gallery_item"><img src="RES/agalla3.jpeg" alt="Agalla 3"></div>
-                <div class="gallery_item"><img src="RES/agalla4.jpeg" alt="Agalla 4"></div>
-                <div class="gallery_item"><img src="RES/agalla2.jpeg" alt="Agalla 2"></div>
-                <div class="gallery_item"><img src="RES/agalla5.jpeg" alt="Agalla 5"></div>
-                <div class="gallery_item"><img src="RES/agallas6.jpg" alt="Agalla 6"></div>
+                <div class="gallery_item"><img src="RES/HC_GD_4437_1_morpho_1.jpg" alt="Agalla 1"></div>
+                <div class="gallery_item"><img src="RES/HC_GD_4423_4_morpho_2.jpg" alt="Agalla 2"></div>
+                <div class="gallery_item"><img src="RES/HC_GD_4427_2_morpho_3-edit.jpg" alt="Agalla 3"></div>
+                <div class="gallery_item"><img src="RES/HC_GD_4427_c_morpho_4-editSuper.jpg" alt="Agalla 4"></div>
+                <div class="gallery_item"><img src="RES/HC_GD_4394_morpho_1.jpg" alt="Agalla 5"></div>
+                <div class="gallery_item"><img src="RES/GD 4265_2_morpho_1.jpg" alt="Agalla 6"></div>
+
+                <div class="gallery_item"><img src="RES/HC_GD_4285_01.JPG" alt="Agalla 7"></div>
+                <div class="gallery_item"><img src="RES/HC_GD_4289_3.jpg" alt="Agalla 8"></div>
+                <div class="gallery_item"><img src="RES/HC_GD_4233_1.jpg" alt="Agalla 9"></div>
+                <div class="gallery_item"><img src="RES/GD_HC_4299_3_idiFn.png" alt="Agalla 10"></div>
+                <div class="gallery_item"><img src="RES/GD 4246_2.JPG" alt="Agalla 11"></div>
+                <div class="gallery_item"><img src="RES/Image_2090.jpg" alt="Agalla 12"></div>
             </div>
         </section>
 
