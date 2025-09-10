@@ -2,7 +2,7 @@
 const IMGrande = document.getElementById("IMGrande");
 
 // Constante que almacena el elemento con ID = "img"
-let img = document.getElementById("img");
+let imagen = document.getElementById("imagen"); /*a esta la llamaste img y por eso funcionaba pero con errores*/
 
 // Constantes que almacena los elementos de cerrar
 const EquisCerrar = document.getElementById("EquisCerrar");
@@ -17,23 +17,25 @@ const mensajeError = document.getElementById('mensajeError');
 const formSubida = document.getElementById('formSubida');
 let title = document.getElementById("title")
 
+let posicion = 0
+
 // Inicializar la galería
 function inicializarGaleria() {
     // Obtener todos los elementos con clase gallery_item
-    let gallery_Items = document.querySelectorAll(".gallery_item");
+    let gallery_Items = [... document.querySelectorAll("#gallery_item")]; 
     
     // Recorrer todos los elementos de la galería
     gallery_Items.forEach((elemento, i) => {
         // Para cada elemento, agrega un evento click
         elemento.addEventListener("click", (e) => {
-            // Encontrar la imagen dentro del div
-            const imagen = elemento.querySelector('img');
+
+            posicion = i;
             
             // Mostrar en el elemento imagen de IMGrande a la que se le da click
             IMGrande.style.display = "flex";
-            img.src = imagen.src;
+            
+            imagen.src = elemento.src;
             title.textContent = elemento.dataset.name;
-                console.log(title)
         });
     });
 }

@@ -25,7 +25,7 @@
    <!-- Modal para ver imagen ampliada -->
     <div class="IMGrande" id="IMGrande">
         <span id="EquisCerrar">X</span> <!-- Botón para cerrar -->
-        <img src="RES/agalla1.jpeg" id="img" alt="Vista ampliada">
+        <img src="RES/Image_2077.jpg" id="imagen" alt="Vista ampliada">
         <p id="title">Este es el título de la imagen</p>
     </div>
     
@@ -39,7 +39,8 @@
         <a href="#agallas"><i class="fas fa-leaf"></i> información sobre las agalla </a>
         <a href="#galeria"><i class="fas fa-images"></i> Galería</a>
         <a href="#investigaciones"><i class="fas fa-flask"></i> Investigaciones</a>
-        <a href="../Herbario/index1.html"><i class="fas fa-comments"></i> Foro</a> <!-- enlace local -->
+        <!-- <a href="../Herbario/index1.html"><i class="fas fa-comments"></i> Foro</a> enlace local -->
+        <a href="/Herbario/index1.html"><i class="fas fa-comments"></i> Foro</a> <!-- enlace local -->
         <a href="https://www.scielo.br/j/bn/a/VNrcQ7ttg3xQ9DFFk6f6PFn/?lang=en" target="_blank"><i class="fas fa-comments"></i>Articulo</a> <!-- enlace externo -->
         <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
     </div>
@@ -50,10 +51,10 @@
         <p>Explorando el fascinante mundo de las cecidias</p>
         <figure id="carrucel">
             <div class="box">
-                <span style="--i:1;" class="gallery_item" ><img src="RES/Caricatura_agallas_edi.jpeg" alt="draw1" data-name="loremimput sit amet consectetur 1"  ></span>
-                <span style="--i:2;" class="gallery_item" ><img src="RES/CaricaturaNico_Agallas_ACG_edi.jpeg" alt="draw2" data-name="loremimput sit amet consectetur 2" ></span>
-                <span style="--i:3;" class="gallery_item" ><img src="RES/Caricatura_agallas_edi.jpeg" alt="draw3" data-name="loremimput sit amet consectetur 3" ></span>
-                <span style="--i:4;" class="gallery_item" ><img src="RES/CaricaturaNico_Agallas_ACG_edi.jpeg" alt="draw4" data-name="loremimput sit amet consectetur 4" ></span>
+                <span style="--i:1;"><img id="gallery_item" src="RES/Caricatura_agallas_edi.jpeg" alt="draw1" data-name="loremimput sit amet consectetur 0"  ></span>
+                <span style="--i:2;"><img id="gallery_item" src="RES/CaricaturaNico_Agallas_ACG_edi.jpeg" alt="draw2" data-name="loremimput sit amet consectetur 1" ></span>
+                <span style="--i:3;"><img id="gallery_item" src="RES/Caricatura_agallas_edi.jpeg" alt="draw3" data-name="loremimput sit amet consectetur 2" ></span>
+                <span style="--i:4;"><img id="gallery_item" src="RES/CaricaturaNico_Agallas_ACG_edi.jpeg" alt="draw4" data-name="loremimput sit amet consectetur 3" ></span>
                 
             </div>
         </figure>
@@ -101,22 +102,21 @@
             
             <!-- Grid con imágenes ya cargadas -->
             <div class="gallery-grid" id="galleryGrid">
-                <div class="gallery_item"><img src="RES/HC_GD_4437_1_morpho_1.jpg" alt="Agalla 1"></div>
-                <div class="gallery_item"><img src="RES/HC_GD_4423_4_morpho_2.jpg" alt="Agalla 2"></div>
-                <div class="gallery_item"><img src="RES/HC_GD_4427_2_morpho_3-edit.jpg" alt="Agalla 3"></div>
-                <div class="gallery_item"><img src="RES/HC_GD_4427_c_morpho_4-editSuper.jpg" alt="Agalla 4"></div>
-                <div class="gallery_item"><img src="RES/HC_GD_4394_morpho_1.jpg" alt="Agalla 5"></div>
-                <div class="gallery_item"><img src="RES/GD 4265_2_morpho_1.jpg" alt="Agalla 6"></div>
-
-                <div class="gallery_item"><img src="RES/HC_GD_4285_01.JPG" alt="Agalla 7"></div>
-                <div class="gallery_item"><img src="RES/HC_GD_4289_3.jpg" alt="Agalla 8"></div>
-                <div class="gallery_item"><img src="RES/HC_GD_4233_1.jpg" alt="Agalla 9"></div>
-                <div class="gallery_item"><img src="RES/GD_HC_4299_3_idiFn.png" alt="Agalla 10"></div>
-                <div class="gallery_item"><img src="RES/GD 4246_2.JPG" alt="Agalla 11"></div>
-                <div class="gallery_item"><img src="RES/HC_GD_4382_4.jpg" alt="Agalla 12"></div>
-                <div class="gallery_item"><img src="RES/Image_2090.jpg" alt="Agalla 13"></div>
-                <div class="gallery_item"><img src="RES/Image_2086.jpg" alt="Agalla 14"></div>
-                <div class="gallery_item"><img src="RES/Image_2077.jpg" alt="Agalla 15"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/HC_GD_4437_1_morpho_1.jpg"   data-name="loremimput sit amet consectetur 4" alt="Agalla 1"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/HC_GD_4423_4_morpho_2.jpg"   data-name="loremimput sit amet consectetur 5" alt="Agalla 2"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/HC_GD_4427_2_morpho_3-edit.jpg"   data-name="loremimput sit amet consectetur 6" alt="Agalla 3"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/HC_GD_4427_c_morpho_4-editSuper.jpg"   data-name="loremimput sit amet consectetur 7" alt="Agalla 4"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/HC_GD_4394_morpho_1.jpg"   data-name="loremimput sit amet consectetur 8" alt="Agalla 5"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/GD 4265_2_morpho_1.jpg"   data-name="loremimput sit amet consectetur 9" alt="Agalla 6"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/HC_GD_4285_01.JPG"   data-name="loremimput sit amet consectetur 10" alt="Agalla 7"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/HC_GD_4289_3.jpg"  data-name="loremimput sit amet consectetur 11"  alt="Agalla 8"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/HC_GD_4233_1.jpg"   data-name="loremimput sit amet consectetur 12" alt="Agalla 9"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/GD_HC_4299_3_idiFn.png"   data-name="loremimput sit amet consectetur 13" alt="Agalla 10"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/GD 4246_2.JPG"   data-name="loremimput sit amet consectetur 14" alt="Agalla 11"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/HC_GD_4382_4.jpg"   data-name="loremimput sit amet consectetur 15" alt="Agalla 12"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/Image_2090.jpg"   data-name="loremimput sit amet consectetur 16" alt="Agalla 13"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/Image_2086.jpg"   data-name="loremimput sit amet consectetur 17" alt="Agalla 14"></div>
+                <div class="gallery_item"><img id="gallery_item" src="RES/Image_2077.jpg"   data-name="loremimput sit amet consectetur 1" alt="Agalla 15"></div>
             </div>
             </div>
         </section>
