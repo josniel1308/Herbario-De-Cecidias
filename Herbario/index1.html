@@ -3,71 +3,250 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Foro de Comentarios</title>
-
-  <!-- FontAwesome -->
+  <title>Foro de Comentarios - Herbario Cecidias</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    /* ====== ESTILOS GENERALES ====== */
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif;}
+    body{background:linear-gradient(135deg,#e0f7fa,#f1f8e9);color:#37474f;line-height:1.6;padding-top:80px;}
+    header{background:linear-gradient(to right,#26a69a,#4db6ac);color:white;text-align:center;padding:30px;box-shadow:0 4px 10px rgba(0,0,0,0.1);margin-bottom:30px;}
+    header h1{margin-bottom:10px;font-size:2.5rem;}
+    header p{font-size:1.2rem;opacity:0.9;}
+    main{max-width:800px;margin:0 auto 30px;padding:0 20px;}
+    .formulario,.comentarios{background:white;padding:25px;margin-bottom:25px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);}
+    h2{color:#00796b;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #b2dfdb;}
+    form{display:flex;flex-direction:column;}
+    input,textarea{margin-bottom:20px;padding:15px;border:2px solid #b2dfdb;border-radius:8px;font-size:1rem;transition:all 0.3s;}
+    input:focus,textarea:focus{outline:none;border-color:#26a69a;box-shadow:0 0 8px rgba(38,166,154,0.4);}
+    textarea{min-height:120px;resize:vertical;}
+    button{background:linear-gradient(to right,#26a69a,#4db6ac);color:white;border:none;padding:15px;border-radius:8px;font-size:1.1rem;cursor:pointer;transition:all 0.3s;font-weight:600;}
+    button:hover{transform:translateY(-3px);box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+    .comentarios ul{list-style:none;}
+    .comentarios li{background:#f8f9fa;padding:20px;border-left:5px solid #4db6ac;margin-bottom:20px;border-radius:8px;position:relative;transition:all 0.3s;}
+    .comentarios li:hover{transform:translateX(5px);box-shadow:0 5px 15px rgba(0,0,0,0.05);}
+    .comentarios li strong{color:#00796b;font-size:1.1rem;display:block;margin-bottom:10px;}
+    .comentarios li p{color:#495057;line-height:1.6;}
+    .comentarios .fecha{display:block;font-size:0.85rem;color:#78909c;margin-top:10px;text-align:right;}
 
-  <!-- Tus estilos (ajusta orden si uno debe sobrescribir al otro) -->
-  <link rel="stylesheet" href="css/style.css"/>
-  <link rel="stylesheet" href="css/style2.css"/>
+    /* ====== BOTÓN ELIMINAR ====== */
+    .eliminar-btn{
+      position:absolute;
+      top:15px;
+      right:15px;  /* esquina superior derecha */
+      color:#e53935;
+      cursor:pointer;
+      font-size:1.2rem;
+      transition:color 0.2s, transform 0.2s;
+    }
+    .eliminar-btn:hover{
+      color:#b71c1c;
+      transform:scale(1.2);
+    }
+
+    .no-comments{text-align:center;padding:30px;color:#78909c;font-style:italic;}
+    .mensaje-usuario{padding:15px;margin:15px 0;border-radius:8px;text-align:center;font-weight:500;}
+    .mensaje-usuario.error{color:#721c24;background-color:#f8d7da;border:1px solid #f5c6cb;}
+    .mensaje-usuario.success{color:#155724;background-color:#d4edda;border:1px solid #c3e6cb;}
+
+    footer{text-align:center;padding:20px;background:#2c3e50;color:white;}
+
+    /* ===========================
+       ESTILOS DEL MENÚ LATERAL
+       (agregados tal como estaban antes)
+       =========================== */
+    .sidebar{position:fixed;left:0;top:0;height:100%;width:250px;background-color:#2c3e50;padding-top:80px;transform:translateX(-100%);transition:transform 0.3s ease;z-index:900;}
+    .sidebar.active{transform:translateX(0);}
+    .sidebar a{display:block;color:#ecf0f1;padding:15px 20px;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.1);transition:background-color 0.3s;}
+    .sidebar a:hover{background-color:#34495e;}
+    .sidebar a i{margin-right:10px;width:20px;text-align:center;}
+    .menu-toggle{position:fixed;top:25px;left:20px;background-color:#2c3e50;color:white;border:none;border-radius:50%;width:50px;height:50px;font-size:20px;cursor:pointer;z-index:1100;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 5px rgba(0,0,0,0.2);}
+    .content{margin-left:0;transition:margin-left 0.3s ease;}
+    .content.shifted{margin-left:250px;}
+    .logo{position:fixed;top:20px;left:80px;z-index:1000;transition:left 0.3s ease;cursor:move;}
+    .logo img{max-width:150px;height:auto;border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,0.2);transition:transform 0.2s;}
+    .logo.dragging img{transform:scale(1.05);box-shadow:0 4px 15px rgba(0,0,0,0.3);}
+    .sidebar.active ~ .logo{left:270px;}
+    .logo-position-indicator{position:fixed;bottom:20px;right:20px;background:rgba(0,0,0,0.7);color:white;padding:8px 12px;border-radius:4px;font-size:12px;z-index:1000;}
+
+    @media(max-width:768px){
+      body{padding-top:70px;}
+      header h1{font-size:2rem;}
+      .formulario,.comentarios{padding:20px;}
+      .comentarios .avatar{width:40px;height:40px;font-size:1.2rem;}
+      .content.shifted{margin-left:0;}
+      .logo{left:70px;max-width:120px;}
+      .logo img{max-width:120px;}
+      .sidebar.active ~ .logo{left:70px;}
+      .logo-position-indicator{bottom:10px;right:10px;font-size:10px;}
+    }
+    /* Ajuste del logo */
+.logo img {
+  width: 70px;          /* tamaño fijo (ajusta según necesites) */
+  height: 70px;         /* mismo valor para que sea cuadrado */
+  border-radius: 50%;   /* lo vuelve circular */
+  object-fit: cover;    /* recorta sin deformar */
+  border: 2px solid white; /* opcional, para que resalte */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2); /* sombra sutil */
+}
+
+/* Alineación dentro del menú */
+.menu .logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;       /* separa un poco del borde */
+}
+
+  </style>
 </head>
 <body>
+  <!-- Botón para abrir/cerrar menú -->
+  <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
 
-  <!-- Pantalla de carga inicial -->
-  <div id="splash">
-    <img src="RES/Herbario Cecidias.png" alt="Logo Intro" />
-  </div>
-
-  <!-- Logo fijo -->
+  <!-- Logo fijo en pantalla -->
   <div class="logo">
-    <img src="RES/Herbario Cecidias.png" alt="Logo Herbario de Agallas" />
+      <img src="RES/Herbario Cecidias.png" alt="Logo Herbario de Agallas">
   </div>
+  <!-- Indicador de posición (solo visual) -->
+  <div class="logo-position-indicator" id="positionIndicator">Posición: 80px, 20px</div>
 
-  <!-- Menú lateral (UN SOLO div.sidebar, debe ser HERMANO del .content) -->
-  <div class="sidebar">
-    <a href="#agallas"><i class="fas fa-leaf"></i> Información sobre las agallas</a>
-    <a href="#galeria"><i class="fas fa-images"></i> Galería</a>
-    <a href="#investigaciones"><i class="fas fa-book"></i> Investigaciones</a>
-    <a href="#muestras"><i class="fas fa-vial"></i> Como guardar muestras de agallas secas</a>
-    <a href="index1.html"><i class="fas fa-comments"></i> Foro</a>
-    <a href="https://www.scielo.br/j/bn/a/VNrcQ7ttg3xQ9DFFk6f6PFn/?lang=en" target="_blank"><i class="fas fa-file-alt"></i> Artículo</a>
-    <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
-  </div>
+  <!-- Menú lateral -->
+ <div class="sidebar" id="sidebar">
+  <a href="index.html"><i class="fas fa-home"></i> Página Principal</a>
+  <a href="index.html#agallas"><i class="fas fa-leaf"></i> Información sobre las agallas</a>
+  <a href="index.html#galeria"><i class="fas fa-images"></i> Galería</a>
+  <a href="index.html#investigaciones"><i class="fas fa-book"></i> Investigaciones</a>
+  <a href="index.html#muestras"><i class="fas fa-vial"></i> Muestras de agallas secas</a>
+  <a href="index1.html"><i class="fas fa-comments"></i> Foro</a> <!-- este te deja en el foro -->
+  <a href="https://www.scielo.br/j/bn/a/VNrcQ7ttg3xQ9DFFk6f6PFn/?lang=en" target="_blank"><i class="fas fa-file-alt"></i> Artículo</a>
+  <a href="index.html#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+</div>
 
-  <!-- Contenedor principal: header + main + footer -->
-  <div class="content">
+  <!-- Contenedor que se desplaza cuando se abre el menú -->
+  <div class="content" id="content">
     <header class="hero">
       <h1>Foro de Comentarios</h1>
       <p>Comparte tus ideas sobre el Herbario de Cecidias 🌿</p>
     </header>
 
     <main>
-      <!-- Formulario -->
       <section class="formulario">
         <h2>Escribe tu comentario</h2>
         <form id="comentarioForm">
           <input type="text" id="nombre" placeholder="Tu nombre" required />
           <textarea id="mensaje" rows="4" placeholder="Escribe tu comentario..." required></textarea>
-          <button type="submit">Publicar</button>
+          <button type="submit">Publicar comentario</button>
         </form>
       </section>
 
-      <!-- Comentarios -->
       <section class="comentarios">
-        <h2>Comentarios</h2>
+        <h2>Comentarios de la comunidad</h2>
         <ul id="listaComentarios">
-          <li>No hay comentarios aún</li>
+          <li class="no-comments">No hay comentarios aún. ¡Sé el primero en comentar!</li>
         </ul>
       </section>
     </main>
 
-    <footer>
-      <p>&copy; 2025 Foro del Herbario</p>
-    </footer>
+    <footer><p>&copy; 2023 Foro del Herbario de Cecidias</p></footer>
   </div>
 
-  <!-- Script al final (asegura que se ejecute cuando el DOM ya esté cargado) -->
-  <script src="JS/Foro.js"></script>
+  <script>
+    // referencias a elementos de comentarios
+    const comentarioForm = document.getElementById('comentarioForm');
+    const listaComentarios = document.getElementById('listaComentarios');
+
+    // referencias del menú
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+
+    // cargar comentarios del localStorage
+    function cargarComentarios(){
+      listaComentarios.innerHTML = "";
+      const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+      if(comentarios.length === 0){
+        listaComentarios.innerHTML = '<li class="no-comments">No hay comentarios aún. ¡Sé el primero en comentar!</li>';
+      } else {
+        comentarios.forEach(c => {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <i class="fas fa-minus-circle eliminar-btn" data-id="${c.id}" title="Eliminar comentario"></i>
+            <strong>${c.nombre}</strong>
+            <p>${c.mensaje}</p>
+            <span class="fecha">${c.fecha}</span>
+          `;
+          listaComentarios.appendChild(li);
+        });
+      }
+    }
+
+    // guardar comentario en localStorage
+    function guardarComentario(c){
+      const comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+      comentarios.push(c);
+      localStorage.setItem('comentarios', JSON.stringify(comentarios));
+    }
+
+    // eliminar comentario por id
+    function eliminarComentario(id){
+      let comentarios = JSON.parse(localStorage.getItem('comentarios')) || [];
+      comentarios = comentarios.filter(c => c.id !== id);
+      localStorage.setItem('comentarios', JSON.stringify(comentarios));
+      cargarComentarios();
+    }
+
+    // mostrar mensaje arriba del formulario
+    function mostrarMensaje(texto, tipo){
+      const div = document.createElement('div');
+      div.className = `mensaje-usuario ${tipo}`;
+      div.textContent = texto;
+      document.querySelector('.formulario').prepend(div);
+      setTimeout(()=>div.remove(), 3000);
+    }
+
+    // envío del formulario
+    comentarioForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const nombre = document.getElementById('nombre').value.trim();
+      const mensaje = document.getElementById('mensaje').value.trim();
+      if(nombre && mensaje){
+        const comentario = { id: Date.now(), nombre, mensaje, fecha: new Date().toLocaleString('es-ES') };
+        guardarComentario(comentario);
+        comentarioForm.reset();
+        cargarComentarios();
+        mostrarMensaje('¡Comentario publicado con éxito!', 'success');
+      } else {
+        mostrarMensaje('Por favor, completa todos los campos.', 'error');
+      }
+    });
+
+    // delegado: manejar clic en botón eliminar
+    listaComentarios.addEventListener('click', e => {
+      if(e.target.classList.contains('eliminar-btn')){
+        const id = parseInt(e.target.getAttribute('data-id'));
+        if(confirm("⚠️ ¿Seguro que deseas eliminar este comentario? Esta acción no se puede deshacer.")){
+          eliminarComentario(id);
+          mostrarMensaje('Comentario eliminado.', 'success');
+        }
+      }
+    });
+
+    // controlar el menú lateral (abrir / cerrar)
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+      content.classList.toggle('shifted');
+      const icon = menuToggle.querySelector('i');
+      if(sidebar.classList.contains('active')){
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // iniciar
+    cargarComentarios();
+  </script>
 </body>
 </html>
