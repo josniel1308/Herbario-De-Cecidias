@@ -1,62 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Foro de Comentarios</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style2.css">
-  <link rel="stylesheet" href="css/style.css">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <!-- Tus estilos (ajusta orden si uno debe sobrescribir al otro) -->
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/style2.css"/>
 </head>
 <body>
-   <!-- Pantalla de carga inicial con el logo -->
-   <div id="splash">
-     <img src="RES/Herbario Cecidias.png" alt="Logo Intro">
-   </div>
 
-<!-- Logo fijo en pantalla -->
-    <div class="logo">
-        <img src="RES/Herbario Cecidias.png" alt="Logo Herbario de Agallas">
-    </div>
-   <!-- Barra lateral de navegación -->
-        <div class="sidebar">
-        <a href="#agallas"><i class="fas fa-leaf"></i> información sobre las agalla </a>
-        <a href="#galeria"><i class="fas fa-images"></i> Galería</a>
-        <a href="#investigaciones"><i class="fas fa-flask"></i> Investigaciones</a>
-        <a href="#muestras"><i class="fas fa-flask"></i> como guardar muestras de agallas secas</a>
-        <a href="https://www.scielo.br/j/bn/a/VNrcQ7ttg3xQ9DFFk6f6PFn/?lang=en" target="_blank"><i class="fas fa-comments"></i>Articulo</a> <!-- enlace externo -->
-        <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
-    </div>
+  <!-- Pantalla de carga inicial -->
+  <div id="splash">
+    <img src="RES/Herbario Cecidias.png" alt="Logo Intro" />
+  </div>
 
-   <!-- Encabezado principal -->
-   <header>
-     <h1>Foro de Comentarios</h1>
-     <p>Comparte tus ideas sobre el Herbario de Cecidias 🌿</p>
-   </header>
+  <!-- Logo fijo -->
+  <div class="logo">
+    <img src="RES/Herbario Cecidias.png" alt="Logo Herbario de Agallas" />
+  </div>
 
-   <main>
-     <!-- Formulario para publicar un comentario -->
-     <section class="formulario">
-       <h2>Escribe tu comentario</h2>
-       <form id="comentarioForm">
-         <input type="text" id="nombre" placeholder="Tu nombre" required>
-         <textarea id="mensaje" rows="4" placeholder="Escribe tu comentario..." required></textarea>
-         <button type="submit">Publicar</button>
-       </form>
-     </section>
+  <!-- Menú lateral (UN SOLO div.sidebar, debe ser HERMANO del .content) -->
+  <div class="sidebar">
+    <a href="#agallas"><i class="fas fa-leaf"></i> Información sobre las agallas</a>
+    <a href="#galeria"><i class="fas fa-images"></i> Galería</a>
+    <a href="#investigaciones"><i class="fas fa-book"></i> Investigaciones</a>
+    <a href="#muestras"><i class="fas fa-vial"></i> Como guardar muestras de agallas secas</a>
+    <a href="index1.html"><i class="fas fa-comments"></i> Foro</a>
+    <a href="https://www.scielo.br/j/bn/a/VNrcQ7ttg3xQ9DFFk6f6PFn/?lang=en" target="_blank"><i class="fas fa-file-alt"></i> Artículo</a>
+    <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
+  </div>
 
-     <!-- Lista donde se mostrarán los comentarios -->
-     <section class="comentarios">
-       <h2>Comentarios</h2>
-       <ul id="listaComentarios"></ul> <!-- Aquí el JS insertará <li> con los comentarios -->
-     </section>
-   </main>
+  <!-- Contenedor principal: header + main + footer -->
+  <div class="content">
+    <header class="hero">
+      <h1>Foro de Comentarios</h1>
+      <p>Comparte tus ideas sobre el Herbario de Cecidias 🌿</p>
+    </header>
 
-   <!-- Pie de página -->
-   <footer>
-     <p>&copy; 2025 Foro del Herbario</p>
-   </footer>
+    <main>
+      <!-- Formulario -->
+      <section class="formulario">
+        <h2>Escribe tu comentario</h2>
+        <form id="comentarioForm">
+          <input type="text" id="nombre" placeholder="Tu nombre" required />
+          <textarea id="mensaje" rows="4" placeholder="Escribe tu comentario..." required></textarea>
+          <button type="submit">Publicar</button>
+        </form>
+      </section>
 
-   <!-- Script que maneja la lógica del foro -->
-   <script src="JS/Foro.js"></script>
+      <!-- Comentarios -->
+      <section class="comentarios">
+        <h2>Comentarios</h2>
+        <ul id="listaComentarios">
+          <li>No hay comentarios aún</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Foro del Herbario</p>
+    </footer>
+  </div>
+
+  <!-- Script al final (asegura que se ejecute cuando el DOM ya esté cargado) -->
+  <script src="JS/Foro.js"></script>
 </body>
+</html>
